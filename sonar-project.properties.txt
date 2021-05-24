@@ -6,4 +6,5 @@ sonar.login=b7f51b62579ef3a066293207836c0ff98e7234ea
 sonar.organization=erivas
 sonar.sources=.
 sonar.java.binaries=.
+sonar.java.libraries=.
 sonar.branch=master
