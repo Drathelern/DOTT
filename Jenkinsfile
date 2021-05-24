@@ -21,7 +21,7 @@ pipeline {
 
     stage('Static Code analysis') {
             environment {
-                scannerHome = tool 'SonarQubeScanner'
+                scannerHome = tool 'SonarQube Scanner'
             }
             steps {
                 withSonarQubeEnv('SonarCloud') {
