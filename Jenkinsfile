@@ -19,10 +19,18 @@ pipeline {
       }
     }
 
-    stage('SonarCloud') {
-      steps {
-        echo 'Sonar Cloud'
-      }
+    stage('Static Code analysis') {
+            environment {
+                scannerHome = tool 'SonarQubeScanner'
+            }
+            steps {
+                withSonarQubeEnv('SonarCloud') {
+                    sh "${scannerHome}/bin/sonar-scanner"
+                }
+                timeout(time: 1, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
+                }
+            }
     }
 
   }
