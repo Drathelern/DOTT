@@ -1,25 +1,19 @@
 pipeline{
     agent any
     stages{
-        stage('One'){
+        stage('Validate'){
             steps{
-                sh '''
-			echo "Step One"
-		   '''
+                sh 'mvn validate'
             }
         }
-        stage('Two'){
+        stage('Clean'){
             steps{
-                sh '''
-			echo "Step One"
-		   '''
+                sh 'mvn clean'
             }
         }
-        stage('Three'){
+        stage('Unit Test'){
             steps{
-                sh '''
-			echo "Step One"
-		   '''
+                sh 'mvn Test'
             }
         }
     }
