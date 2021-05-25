@@ -6,7 +6,7 @@ import static spark.Spark.*;
 
 public class App {
     public static void main(String[] args) {
-        System.out.println( "Listening on: http://localhost:8000/" );
+        logger.log( "Listening on: http://localhost:8000/" );
 
         port(8000);
         get("/", App::routeRoot);
