@@ -46,7 +46,9 @@ pipeline {
     }
     
     
-    stage('Quality Gate') { /* It uses webhook to receive feedback from SonarCloud about the scan */
+    stage('Quality Gate') { /* Quality Gates is a centralized solution for monitoring data quality. 
+                                It helps organizations efficiently improve the quality of information.
+                                SonarCloud send a post of quality gate status */
             steps {            
                 timeout(time: 1, unit: 'MINUTES') {
                     waitForQualityGate abortPipeline: true
