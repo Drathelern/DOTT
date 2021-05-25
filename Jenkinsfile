@@ -1,4 +1,4 @@
-\* 
+/* 
   
   -Jenkinsfile is a file where you can write the steps or instructions 
     necessary to execute a compilation, 
@@ -10,7 +10,7 @@
   -Maven: Is a build automation tool for Java projects, It is used for projects build, dependency and documentation. 
     It simplifies the build process like ANT.
       +Ant is a Java library and command line tool whose can be used to compile your code, fetching dependencies and for packaging.
-*\
+*/
 pipeline {
   agent any
   stages {
