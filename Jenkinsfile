@@ -25,6 +25,12 @@ pipeline {
         sh 'mvn clean' /* Clears the target directory into which Maven normally builds your project. */
       }
     }
+    
+    stage('Lint Code'){
+      steps{
+        sh 'mvn checkstyle:check'
+       }
+     }
 
     stage('Unite Test') {
       steps {
