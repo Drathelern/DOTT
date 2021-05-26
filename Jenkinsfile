@@ -31,11 +31,6 @@ pipeline {
         sh 'mvn test' /* Runs the tests against the compiled source code using a suitable unit testing framework. 
                         These tests should not require the code be packaged or deployed. */
       }
-      post {
-                always {
-                    junit 'tests/results/*.xml'
-                }
-      }
     }
 
     stage('Static Code analysis') { /* Conect Sonarqube scanner with SonarCloud to do continuous inspection of code quality 
