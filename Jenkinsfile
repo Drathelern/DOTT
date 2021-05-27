@@ -35,13 +35,6 @@ pipeline {
       }
     }
     
-     stage('Deploy') {
-      steps {
-        sh 'mvn deploy' /* Runs the tests against the compiled source code using a suitable unit testing framework. 
-                        These tests should not require the code be packaged or deployed. */
-      }
-    }
-    
     stage('Lint Code'){
       steps{
         sh 'mvn checkstyle:check' /* The Checkstyle Plugin generates a report regarding the code style used by the developers. */
