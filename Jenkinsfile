@@ -15,35 +15,7 @@
 pipeline {
   agent any
   stages {
-    
-    stage('Static Code analysis') { /* Conect Sonarqube scanner with SonarCloud to do continuous inspection of code quality 
-                                     To the conection with SonarCloud I have my sonar-project.propierties file */
-            environment {
-                scannerHome = tool 'SonarCloud' 
-            }
-            steps {
-                withSonarQubeEnv('SonarCloud') {
-                    sh "${scannerHome}/bin/sonar-scanner"
-                }          
-            }
-    }
-   
-     stage('Lint Code'){
-      steps{
-        sh 'mvn checkstyle:check' /* The Checkstyle Plugin generates a report regarding the code style used by the developers. */
-       }
-     } 
-    
-    stage('Quality Gate') { /* Quality Gates is a centralized solution for monitoring data quality. 
-                                It helps organizations efficiently improve the quality of information.
-                                SonarCloud send a post of quality gate status */
-            steps {            
-                timeout(time: 1, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
-                }
-            }
-    }
-    
+     
     stage('Validate') {
       steps {
         sh 'mvn validate' /* Validates that the project is correct and all necessary information is available. This also makes sure the dependencies are downloaded. */
@@ -63,6 +35,34 @@ pipeline {
       }
     }
     
+    stage('Lint Code'){
+      steps{
+        sh 'mvn checkstyle:check' /* The Checkstyle Plugin generates a report regarding the code style used by the developers. */
+       }
+     } 
+    
+     stage('Static Code analysis') { /* Conect Sonarqube scanner with SonarCloud to do continuous inspection of code quality 
+                                     To the conection with SonarCloud I have my sonar-project.propierties file */
+            environment {
+                scannerHome = tool 'SonarCloud' 
+            }
+            steps {
+                withSonarQubeEnv('SonarCloud') {
+                    sh "${scannerHome}/bin/sonar-scanner"
+                }          
+            }
+    }
+    
+    
+    stage('Quality Gate') { /* Quality Gates is a centralized solution for monitoring data quality. 
+                                It helps organizations efficiently improve the quality of information.
+                                SonarCloud send a post of quality gate status */
+            steps {            
+                timeout(time: 1, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
+                }
+            }
+    }
 
   }
   tools { /* Tools used in Global tool configuration for use in the project */
