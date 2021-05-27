@@ -27,7 +27,12 @@ pipeline {
                 }          
             }
     }
-    
+   
+     stage('Lint Code'){
+      steps{
+        sh 'mvn checkstyle:check' /* The Checkstyle Plugin generates a report regarding the code style used by the developers. */
+       }
+     } 
     
     stage('Quality Gate') { /* Quality Gates is a centralized solution for monitoring data quality. 
                                 It helps organizations efficiently improve the quality of information.
@@ -51,12 +56,6 @@ pipeline {
       }
     }
     
-    stage('Lint Code'){
-      steps{
-        sh 'mvn checkstyle:check' /* The Checkstyle Plugin generates a report regarding the code style used by the developers. */
-       }
-     }
-        
     stage('Unit Test') {
       steps {
         sh 'mvn test' /* Runs the tests against the compiled source code using a suitable unit testing framework. 
