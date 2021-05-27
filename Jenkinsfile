@@ -26,6 +26,12 @@ pipeline {
       }
     }
     
+    stage('Lint Code'){
+      steps{
+        sh 'mvn checkstyle:check'
+       }
+     }
+        
     stage('Unite Test') {
       steps {
         sh 'mvn test' /* Runs the tests against the compiled source code using a suitable unit testing framework. 
