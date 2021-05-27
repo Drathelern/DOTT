@@ -44,28 +44,22 @@
 
    <build>
       <plugins>
-         <plugin>
+        <plugin>
             <artifactId>maven-assembly-plugin</artifactId>
             <executions>
-               <execution>
-                  <phase>package</phase>
-                  <goals>
-                     <goal>single</goal>
-                  </goals>
-               </execution>
+                <execution>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>single</goal>
+                    </goals>
+                </execution>
             </executions>
             <configuration>
-               <appendAssemblyId>false</appendAssemblyId>
-               <archive>
-                  <manifest>
-                     <mainClass>com.wizeline.App</mainClass>
-                  </manifest>
-               </archive>
-               <descriptorRefs>
-                  <descriptorRef>jar-with-dependencies</descriptorRef>
-               </descriptorRefs>
+                <descriptorRefs>
+                    <descriptorRef>jar-with-dependencies</descriptorRef>
+                </descriptorRefs>
             </configuration>
-         </plugin>
+        </plugin>
 
          <plugin>
              <groupId>org.apache.maven.plugins</groupId>
@@ -85,7 +79,7 @@
                  <failOnViolation>false</failOnViolation>
                  <outputFile>build/reports/**/*.xml</outputFile>
              </configuration>
-         </plugin>
+         </plugin> 
       </plugins>
    </build>
    
