@@ -10,6 +10,7 @@
   -Maven: Is a build automation tool for Java projects, It is used for projects build, dependency and documentation. 
     It simplifies the build process like ANT.
       +Ant is a Java library and command line tool whose can be used to compile your code, fetching dependencies and for packaging.
+  -Lint: Lint that flag suspicious usage in software written in any computer language.
 */
 pipeline {
   agent any
@@ -28,7 +29,7 @@ pipeline {
     
     stage('Lint Code'){
       steps{
-        sh 'mvn checkstyle:check'
+        sh 'mvn checkstyle:check' /* The Checkstyle Plugin generates a report regarding the code style used by the developers. */
        }
      }
         
