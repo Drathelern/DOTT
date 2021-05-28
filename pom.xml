@@ -67,18 +67,7 @@
             </plugin>
             
 <!--Added Section To Linting.-->
-   <!--Added Maven Surefire Plugin  The Surefire Plugin is used during the test phase of the build lifecycle to execute the unit tests of an application. 
-       It generates reports in two different file formats:
-        Plain text files (*.txt)
-        XML files (*.xml)  -->
-         <plugin>
-             <groupId>org.apache.maven.plugins</groupId>
-             <artifactId>maven-surefire-plugin</artifactId>
-             <configuration>
-               <testFailureIgnore>true</testFailureIgnore>
-             </configuration>
-         </plugin>
-    <!--EndMaven Surefire Plugin-->
+ 
             
     <!--Added Maven Maven Checkstyle  
         The Checkstyle Plugin generates a report regarding the code style used by the developers. -->    
@@ -91,7 +80,7 @@
                  <configLocation>google_checks.xml</configLocation>
                  <consoleOutput>true</consoleOutput>
                  <failOnViolation>false</failOnViolation>
-                 <outputFile>build/reports/**/*.xml</outputFile>
+                 <outputFile>build/reports/report.xml</outputFile>
              </configuration>
          </plugin> 
       </plugins>      

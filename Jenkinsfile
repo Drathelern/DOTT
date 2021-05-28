@@ -15,6 +15,7 @@
 pipeline {
   agent any
   stages {
+     
     stage('Validate') {
       steps {
         sh 'mvn validate' /* Validates that the project is correct and all necessary information is available. This also makes sure the dependencies are downloaded. */
@@ -27,20 +28,20 @@ pipeline {
       }
     }
     
-    stage('Lint Code'){
-      steps{
-        sh 'mvn checkstyle:check' /* The Checkstyle Plugin generates a report regarding the code style used by the developers. */
-       }
-     }
-        
-    stage('Unite Test') {
+    stage('Unit Test') {
       steps {
         sh 'mvn test' /* Runs the tests against the compiled source code using a suitable unit testing framework. 
                         These tests should not require the code be packaged or deployed. */
       }
     }
-
-    stage('Static Code analysis') { /* Conect Sonarqube scanner with SonarCloud to do continuous inspection of code quality 
+    
+    stage('Lint Code'){
+      steps{
+        sh 'mvn checkstyle:check' /* The Checkstyle Plugin generates a report regarding the code style used by the developers. */
+       }
+     } 
+    
+     stage('Static Code analysis') { /* Conect Sonarqube scanner with SonarCloud to do continuous inspection of code quality 
                                      To the conection with SonarCloud I have my sonar-project.propierties file */
             environment {
                 scannerHome = tool 'SonarCloud' 
@@ -62,7 +63,6 @@ pipeline {
                 }
             }
     }
-    
 
   }
   tools { /* Tools used in Global tool configuration for use in the project */
