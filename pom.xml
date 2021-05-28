@@ -80,7 +80,7 @@
                  <configLocation>google_checks.xml</configLocation>
                  <consoleOutput>true</consoleOutput>
                  <failOnViolation>false</failOnViolation>
-                 <outputFile>build/reports/**/*.xml</outputFile>
+                 <outputFile>build/reports/report.xml</outputFile>
              </configuration>
          </plugin> 
       </plugins>      
